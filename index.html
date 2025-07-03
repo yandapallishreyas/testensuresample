@@ -1,0 +1,2752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Banner with Centered Nav & Talk To Us</title>
+
+  <!-- Import Fustat font -->
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Fustat', sans-serif;
+      background-color: #F2F1ED;
+      color: #fff;
+    }
+
+    .banner-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      max-width: 100%; margin-bottom:50px;
+      height: 800px;
+      background: url('https://img.freepik.com/free-photo/anthropomorphic-robot-performing-regular-human-job-future_23-2151043415.jpg') center/cover no-repeat;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgb(0,0,0) 0%, rgb(0,0,0) 42%, rgb(20,12,12) 67%, rgb(0,0,0) 100%);
+      opacity: 0.4;
+      z-index: 1;
+      border-radius: 30px;
+    }
+
+    /* Banner Topbar - Flexbox layout */
+    .banner-topbar {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px; margin-left:0px;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Logo and Navigation Links */
+    .logo-placeholder {
+      width: 190px;
+      height: 50px;
+      background-image: url('https://testensure.com/wp-content/uploads/2024/05/TestEnsure.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      flex-shrink: 0;
+    }
+
+    nav.nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    nav.nav-links a {
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    nav.nav-links a:hover {
+      color: #73ED7C;
+    }
+
+    .talk-button {
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      background-image: linear-gradient(to right, rgb(1, 146, 151), rgb(115, 237, 124), rgb(1, 146, 151));
+      background-size: 200% auto;
+      background-position: left center;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: background-position 0.4s ease-in-out;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .talk-button:hover {
+      background-position: right center;
+    }
+
+    /* Banner Content - Title and Buttons */
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1500px;
+      margin: 120px auto 0 auto;
+      padding: 0 40px;
+      color: #fff;
+      text-align: left; /* Align content to the left */
+    }
+
+    .banner-content h3 {
+      font-size: 70px;
+      font-weight: 300;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .banner-content h3 span {
+      background: linear-gradient(267.43deg, #73ED7C 4.95%, #019297 97.92%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .banner-content p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-top: 20px;
+      color: #f0f0f0;
+    }
+
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: flex-start; /* Align buttons to the left */
+    }
+
+    .fancy-button,
+    .fancy-button-2 {
+      padding: 15px 40px 15px 15px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: 'Fustat', sans-serif;
+      text-transform: capitalize;
+      border-radius: 100px;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .fancy-button {
+      color: #fff;
+      background-image: linear-gradient(to right, rgb(1, 146, 151), rgb(115, 237, 124), rgb(1, 146, 151));
+      background-size: 200% auto;
+      background-position: left center;
+      border: none;
+    }
+
+    .fancy-button:hover {
+      background-position: right center;
+    }
+
+    .fancy-button-2 {
+      background-color: white;
+      color: rgb(4, 42, 45);
+      border: none;
+    }
+
+    .fancy-button-2:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .banner-topbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .banner-content {
+        margin-top: 80px;
+        text-align: left; /* Align content to the left on smaller screens */
+      }
+
+      .banner-content h3 {
+        font-size: 42px;
+        line-height: 1.2;
+      }
+
+      .banner-content p {
+        font-size: 16px;
+      }
+
+      nav.nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .buttons {
+        justify-content: flex-start;
+      }
+
+      .logo-placeholder {
+        width: 150px;
+        height: 40px;
+      }
+
+      .talk-button {
+        margin-top: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .banner-topbar {
+        padding: 20px 15px;
+      }
+
+      .banner-content h3 {
+        font-size: 36px;
+      }
+
+      .banner-content p {
+        font-size: 14px;
+      }
+
+      .buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .fancy-button,
+      .fancy-button-2 {
+        padding: 12px 30px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="banner-wrapper">
+    <div class="banner-overlay"></div>
+
+    <div class="banner-topbar">
+      <!-- Logo on the left -->
+      <div class="logo-placeholder"></div>
+
+      <!-- Navigation links (Home, About, Contact Us) -->
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Why TestEnsure?</a>
+        <a href="#">Resources</a>
+        <a href="#">Contact Us</a>
+      </nav>
+
+      <!-- Talk to Us button on the right -->
+      <a href="#" class="talk-button">Talk To Us</a>
+    </div>
+
+    <div class="banner-content">
+      <!-- Left-aligned Title -->
+      <h3>
+        GenAI Test<br>
+        <span>Automation<br>Platform</span>
+      </h3>
+      <p>
+        TestEnsure’s Gen AI Test Automation Platform, developed by Sailotech,<br>
+        is designed to streamline and enhance the software testing process.
+      </p>
+
+      <div class="buttons">
+        <a href="#" class="fancy-button">Learn More</a>
+        <a href="#" class="fancy-button-2">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
+
+<!-----!>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fustat&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fustat', sans-serif;
+    box-sizing: border-box;
+  }
+
+  .services-section {
+    background-color: #0b2e2e;
+    color: #f0f8f8;
+    font-family: 'Fustat', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    border-radius: 30px;
+    justify-content: center;
+    padding: 100px 60px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .services-header {
+    max-width: 500px;
+    flex: 1;
+    text-align: left;
+  }
+
+  .services-header h2 {
+    font-size: 50px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: #ffffff;
+    line-height: 1.1em;
+  }
+
+  .services-header p {
+    margin-bottom: 30px;
+    color: #d6f4f4;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .view-btn {
+    padding: 14px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1em;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(to right, #019297 0%, #73ed7c 50%, #019297 100%);
+    background-size: 200% auto;
+    background-position: left center;
+    transition: background-position 0.4s ease-in-out;
+    border: none;
+  }
+
+  .view-btn:hover {
+    background-position: right center;
+  }
+
+  .services-content {
+    flex: 1;
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background-color: transparent;
+  }
+
+  .service-icon {
+    font-size: 24px;
+    background: linear-gradient(to right, #019297 0%, #73ED7C 50%, #019297 100%);
+    background-size: 200%;
+    background-position: right center;
+    border-radius: 50%;
+    color: rgb(143, 143, 143);
+    text-align: center;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .service-icon:hover {
+    background-position: left center;
+  }
+
+  .service-icon img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .service-text {
+    text-align: left;
+  }
+
+  .service-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    line-height: 1.4em;
+  }
+
+  .service-desc {
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    line-height: 1.7em;
+  }
+
+  /* Responsive for tablet */
+  @media (max-width: 1024px) {
+    .services-section {
+      padding: 60px 40px;
+      gap: 60px;
+    }
+
+    .services-header h2 {
+      font-size: 40px;
+    }
+
+    .services-content {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  }
+
+  /* Responsive for mobile */
+  @media (max-width: 768px) {
+    .services-section {
+      flex-direction: column;
+      padding: 40px 20px;
+      gap: 40px;
+    }
+
+    .services-header {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .services-header h2 {
+      font-size: 32px;
+    }
+
+    .services-header p {
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .services-content {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+      gap: 20px;
+    }
+
+    .service-item {
+      align-items: center;
+      text-align: center;
+    }
+
+    .service-text {
+      text-align: center;
+    }
+  }
+</style>
+
+<section style="font-family: 'Fustat', sans-serif; padding: 0; margin-left: 22.5px; margin-right: 22.5px;">
+  <div class="services-section">
+    <!-- LEFT SIDE -->
+    <div class="services-header">
+      <h2>Innovation and <br>Efficiency <span style="background:linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight:bold;"><br>in Testing</span></h2>
+      <p style="font-size:16px; font-weight:400; color:white;line-height:1.7em;">
+        TestEnsure significantly speeds up testing processes, reducing release cycles by tenfold and ensuring timely delivery while maintaining high quality and compliance with industry standards. This leads to mitigated risks, enhanced business confidence, and improved team productivity.
+      </p>
+      <a href="#" class="view-btn">Discover More</a>
+    </div>
+
+    <!-- RIGHT SIDE (2 per row) -->
+    <div class="services-content">
+      <div class="service-item">
+        <div class="service-icon">
+          <img src="https://img.icons8.com/?size=100&id=41152&format=png&color=000000" alt="Speed icon" />
+        </div>
+        <div class="service-text">
+          <div class="service-title">Speed</div>
+          <div class="service-desc">Achieve a tenfold increase in testing speed across various projects. Accelerate the testing lifecycle, enabling faster time to market without compromising quality.</div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-icon">
+          <img src="https://img.icons8.com/?size=100&id=mVTkH9tY9Bjb&format=png&color=000000" alt="Modularity icon" />
+        </div>
+        <div class="service-text">
+          <div class="service-title">Modularity</div>
+          <div class="service-desc">Utilize modular test suites for customized and flexible testing. Adapt test cases to specific project requirements, enhancing reusability and maintainability。</div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-icon">
+          <img src="https://img.icons8.com/?size=100&id=ZswegYqZPwNI&format=png&color=000000" alt="Accelerated Testing icon" />
+        </div>
+        <div class="service-text">
+          <div class="service-title">Accelerated Testing</div>
+          <div class="service-desc">Enable one-click execution and access over 100 predefined methods, significantly increasing testing efficiency.</div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-icon">
+          <img src="https://img.icons8.com/?size=100&id=8nkymLDcVcxF&format=png&color=000000" alt="Risk Reduction icon" />
+        </div>
+        <div class="service-text">
+          <div class="service-title">Risk Reduction</div>
+          <div class="service-desc">Reduce testing-related risks by up to 80% using prebuilt assets and ensure robust test coverage.</div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-icon">
+          <img src="https://img.icons8.com/?size=100&id=qetMBTOqExTL&format=png&color=000000" alt="Integration icon" />
+        </div>
+        <div class="service-text">
+          <div class="service-title">Integration</div>
+          <div class="service-desc">Seamlessly incorporate the platform into CI/CD pipelines for efficient workflows and continuous testing.</div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-icon">
+          <img src="https://img.icons8.com/?size=100&id=98957&format=png&color=000000" alt="User Friendly icon" />
+        </div>
+        <div class="service-text">
+          <div class="service-title">User Friendly</div>
+          <div class="service-desc">Offer an intuitive self-service interface for both technical and non-technical users, simplifying the testing experience.</div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-icon">
+          <img src="https://img.icons8.com/?size=100&id=8322&format=png&color=000000" alt="Analytics and Insights icon" />
+        </div>
+        <div class="service-text">
+          <div class="service-title">Analytics and Insights</div>
+          <div class="service-desc">Provide actionable insights and visibility through advanced analytics and dashboards.</div>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-icon">
+          <img src="https://img.icons8.com/?size=100&id=XZfQhFwZm1qP&format=png&color=000000" alt="Comprehensive Reporting icon" />
+        </div>
+        <div class="service-text">
+          <div class="service-title">Comprehensive Reporting</div>
+          <div class="service-desc">Gain detailed execution metrics and reporting to understand test coverage and identify defects effectively.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-----!>
+<!line2!>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fustat&display=swap" rel="stylesheet">
+
+<section style="padding: 100px 0; font-family: 'Fustat', sans-serif;">
+  <div class="responsive-container">
+
+    <!-- Left Side: Features and Title -->
+    <div class="left-content">
+      <h2 class="gradient-heading">
+        AI to streamline
+        <span class="highlighted-text">
+          the testing process
+        </span>
+      </h2>
+
+      <!-- Feature Grid -->
+      <div class="feature-grid">
+        <div class="feature-bo">
+          <h3>Automated Test Case Generation</h3>
+          <p>AI algorithms analyze requirements, user stories, and design documents to automatically generate test cases, saving significant time and effort.</p>
+        </div>
+        <div class="feature-bo">
+          <h3>Enhanced Test Coverage</h3>
+          <p>AI identifies critical areas of the application that are most prone to defects, ensuring comprehensive test coverage and prioritizing testing efforts accordingly.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Efficient Test Execution</h3>
+          <p>AI optimizes test execution by identifying redundant test cases, running tests in parallel, and predicting which tests are most likely to fail based on historical data.</p>
+        </div>
+        <div class="feature-box">
+          <h3>Faster Bug Detection</h3>
+          <p>AI analyzes test results in real time, spotting patterns indicative of potential bugs. This enables quicker detection and resolution of issues.</p>
+        </div>
+        <div class="feature-bo">
+          <h3>Predictive Defect Prevention</h3>
+          <p>AI uses historical testing data to predict future defects, allowing teams to proactively address potential issues before becoming critical. This approach helps reduce unexpected failures, improve software stability, and ensure a smoother release process.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side: Image -->
+    <div class="animated-image-wrapper">
+      <img src="https://testensure.com/wp-content/uploads/2024/05/testensure-features.svg"
+           alt="AI-powered testing"
+           class="animated-image">
+    </div>
+  </div>
+</section>
+
+<!-- Responsive Styles -->
+<style>
+  .responsive-container {
+    margin: 0px 272.5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
+
+  .left-content {
+    flex: 1.2;
+    min-width: 320px;
+  }
+
+  .gradient-heading {
+    font-size: 50px;
+    line-height: 1.1em;
+    margin-bottom: 30px;
+    color: #042a2d;
+    font-weight: 300;
+  }
+
+  .highlighted-text {
+    background-image: linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
+
+  .feature-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .feature-box, .feature-bo {
+    padding: 16px 30px;
+    border-radius: 20px;
+    flex: 1 1 calc(50% - 20px);
+    min-width: 260px;
+    box-sizing: border-box;
+    visibility: visible;
+    box-shadow: 0 5px 3px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    color: rgb(143,143,143);
+  }
+
+  .feature-box h3, .feature-bo h3 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    color: black;
+  }
+
+  .feature-box p, .feature-bo p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .animated-image-wrapper {
+    flex: 0.8;
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animated-image {
+    width: 100%;
+    max-width: 460px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    animation: slideImage 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes slideImage {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(20px); }
+  }
+
+  @media (max-width: 1400px) {
+    .responsive-container {
+      margin: 0px 150px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .responsive-container {
+      margin: 0px 60px;
+      flex-direction: column;
+    }
+
+    .gradient-heading {
+      font-size: 42px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .responsive-container {
+      margin: 0px 20px;
+      padding: 0;
+    }
+
+    .gradient-heading {
+      font-size: 36px;
+    }
+
+    .feature-grid {
+      flex-direction: column;
+    }
+
+    .animated-image-wrapper {
+      margin-top: 30px;
+    }
+
+    .animated-image {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gradient-heading {
+      font-size: 30px;
+    }
+  }
+</style>
+
+<!line2!>
+<!line3!>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fustat&display=swap" rel="stylesheet" />
+
+<section
+  style="
+    padding: 100px 0;
+    font-family: 'Fustat', sans-serif;
+    display: flex;
+ margin:0px 22.5px;
+    flex-wrap: wrap;
+    gap: 100px;
+    border-radius: 30px;
+    justify-content: center;
+    background-color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  "
+>
+  <div style=" padding: 0 20px;">
+    <h2 style="font-size: 40px; font-weight: 300; text-align: center; margin-bottom: 40px;margin-top:0px;line-height:1.1em;color:black;">
+      Why
+      <span
+        style="
+          background-image: linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+        "
+        >TestEnsure?</span
+      >
+    </h2>
+
+    <p style="text-align:center; max-width: 800px; margin: 0 auto 40px auto; color: #444;font-size:22px;font-weight:400px;">
+      TestEnsure is a secure Data-driven Business Process validation platform for Enterprises to simulate End-to-End
+      business process scenarios, that are mapped onto various applications scaled across different infrastructures and
+      locations.
+    </p>
+
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      "
+    >
+      <!-- Feature Card 1 -->
+      <div
+        style="
+          background: #fff;
+          border: 2px solid #6ecf94;
+          border-radius: 20px;
+          padding: 25px 30px;
+          box-shadow: 0 4px 12px rgba(0, 128, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+         <svg fill="#000000" height="40px" width="40px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 24 24" xml:space="preserve">
+<g id="cubes">
+	<path d="M17,23.1l-5-2.5l-5,2.5l-6-3v-7.2l5-2.8V3.9l6-3l6,3v6.5l5,2.5v7.2L17,23.1z M18,16.6v3.8l3-1.5v-3.8L18,16.6z M13,18.9
+		l3,1.5v-3.8l-3-1.5V18.9z M8,16.6v3.8l3-1.5v-3.8L8,16.6z M3,18.9l3,1.5v-3.8l-3-1.5V18.9z M14.2,13.5l2.8,1.4l2.8-1.4L17,12.1
+		L14.2,13.5z M4.1,13.4L7,14.9l2.9-1.4L7,11.8L4.1,13.4z M13,7.6v4.3l3-1.5V6.1L13,7.6z M8,10.1l3,1.7V7.6L8,6.1V10.1z M9.2,4.5
+		L12,5.9l2.8-1.4L12,3.1L9.2,4.5z"/>
+</g>
+</svg>
+          <h4 style="margin: 10px; font-size: 18px;color:black;">Reusable Modular Test Suites</h4>
+        </div>
+        <div style="color: rgb(143, 143, 143); font-size: 15px; line-height: 1.5;">
+          <p>
+            Easily customize test suites to meet specific project requirements, allowing for flexible and targeted
+            testing approaches.
+          </p>
+          <p>
+            Modular design enables the reuse of test components across different projects, enhancing efficiency and
+            consistency.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Card 2 -->
+      <div
+        style="
+          background:#fff;
+          border: 2px solid #6ecf94;
+          border-radius: 20px;
+          padding: 25px 30px;
+          box-shadow: 0 4px 12px rgba(0, 128, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+        <svg width="40px" height="40px" viewBox="-1.25 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M8.34 16.802 0.094 28.98c-0.241 0.391 0.008 0.898 0.463 0.948l16.27 1.724zM0.579 24.643 6.461 15.084 0.473 11.492c-0.209 -0.125 -0.473 0.025 -0.473 0.268v12.72c0 0.315 0.413 0.432 0.579 0.163M1.426 33.094l15.188 6.848c0.414 0.191 0.887 -0.112 0.887 -0.567v-5.13l-15.902 -1.742c-0.348 -0.039 -0.487 0.437 -0.172 0.591m6.345 -20.139L14.016 1.787c0.339 -0.552 -0.28 -1.191 -0.842 -0.87L1.391 8.621c-0.193 0.127 -0.187 0.411 0.01 0.53zM18.75 13.75h8.532L19.815 0.595C19.57 0.198 19.16 0 18.75 0s-0.82 0.198 -1.065 0.595L10.218 13.75zm18.277 -2.258 -5.987 3.593 5.882 9.559c0.165 0.269 0.579 0.152 0.579 -0.164V11.76c0 -0.243 -0.265 -0.393 -0.473 -0.268m-7.298 1.462 6.37 -3.805c0.198 -0.119 0.203 -0.403 0.01 -0.53l-11.782 -7.703c-0.562 -0.321 -1.181 0.319 -0.842 0.87zm6.173 19.548L20 34.244v5.13c0 0.456 0.473 0.759 0.887 0.567l15.188 -6.848c0.315 -0.154 0.176 -0.63 -0.172 -0.591m-6.742 -15.701 -8.487 14.852 16.27 -1.724c0.455 -0.051 0.704 -0.558 0.463 -0.948zM18.75 16.25H10.904L18.75 29.98 26.596 16.25z"/></svg>
+          <h4 style="margin:10px; font-size: 18px; color:black;">Pre-Built Test Assets for ERPs and CRMs</h4>
+        </div>
+        <div style="color: rgb(143, 143, 143); font-size: 15px; line-height: 1.5;">
+          <p>
+            Access ready to use test assets that facilitate swift test automation setup, reducing the time and effort
+            required for initial configuration.
+          </p>
+          <p>
+            Prebuilt assets ensure consistency and reliability in testing.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Card 3 -->
+      <div
+        style="
+          background: #fff;
+          border: 2px solid #6ecf94;
+          border-radius: 20px;
+          padding: 25px 30px;
+          box-shadow: 0 4px 12px rgba(0, 128, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+        <<svg width="40px" height="40px" viewBox="0 0 1.2 1.2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.597 0.013a0.038 0.038 0 0 0 0 0.075zM0.114 0.342l-0.032 -0.02 -0.001 0.002zm0.042 0.003A0.038 0.038 0 1 0 0.093 0.305zm0.441 -0.258a0.513 0.513 0 0 1 0.311 0.103l0.045 -0.06A0.588 0.588 0 0 0 0.597 0.013zm0.311 0.103a0.513 0.513 0 0 1 0.185 0.271l0.072 -0.02a0.588 0.588 0 0 0 -0.212 -0.31zm0.185 0.271a0.513 0.513 0 0 1 -0.017 0.327l0.07 0.028a0.588 0.588 0 0 0 0.019 -0.375zm-0.017 0.327a0.513 0.513 0 0 1 -0.212 0.25l0.039 0.064a0.588 0.588 0 0 0 0.242 -0.287zm-0.212 0.25a0.513 0.513 0 0 1 -0.32 0.071l-0.008 0.074a0.588 0.588 0 0 0 0.367 -0.081zm-0.32 0.071a0.513 0.513 0 0 1 -0.298 -0.137l-0.052 0.055a0.588 0.588 0 0 0 0.341 0.157zm-0.298 -0.137a0.513 0.513 0 0 1 -0.153 -0.29l-0.074 0.012a0.588 0.588 0 0 0 0.176 0.332zm-0.153 -0.29a0.513 0.513 0 0 1 0.053 -0.323l-0.066 -0.035a0.588 0.588 0 0 0 -0.061 0.371zm0.052 -0.321 0.011 -0.017L0.093 0.305l-0.011 0.017z" fill="#71717A"/><path d="m0.292 0.315 -0.027 -0.027zM0.1 0.236h-0.038zm0.033 -0.08 -0.027 -0.027zM0.213 0.077 0.239 0.05a0.038 0.038 0 0 0 -0.053 0zm0.159 0.159 0.027 0.027a0.038 0.038 0 0 0 0 -0.053zm-0.106 0.053a0.075 0.075 0 0 1 -0.053 0.022v0.075a0.15 0.15 0 0 0 0.106 -0.044zm-0.053 0.022a0.075 0.075 0 0 1 -0.053 -0.022L0.106 0.342a0.15 0.15 0 0 0 0.106 0.044zm-0.053 -0.022a0.075 0.075 0 0 1 -0.022 -0.053h-0.075a0.15 0.15 0 0 0 0.044 0.106zm-0.022 -0.053c0 -0.02 0.008 -0.039 0.022 -0.053L0.106 0.13a0.15 0.15 0 0 0 -0.044 0.106zm0.022 -0.053L0.239 0.103 0.186 0.05 0.106 0.13zm0.027 -0.08 0.159 0.159 0.053 -0.053L0.239 0.05zm0.159 0.106L0.266 0.289l0.053 0.053 0.08 -0.08z" fill="#71717A"/><path d="M0.213 0.077a0.038 0.038 0 0 0 0.053 0.053zm0.106 0A0.038 0.038 0 1 0 0.266 0.024zm-0.053 0.053 0.053 -0.053L0.266 0.024l-0.053 0.053z" fill="#71717A"/><path d="M0.319 0.183a0.038 0.038 0 0 0 0.053 0.053zm0.106 0a0.038 0.038 0 1 0 -0.053 -0.053zm-0.053 0.053 0.053 -0.053 -0.053 -0.053 -0.053 0.053z" fill="#71717A"/><path d="M0.45 0.65h-0.038zm0.15 -0.3 0.031 -0.021a0.038 0.038 0 0 0 -0.062 0zm0.113 0.3a0.113 0.113 0 0 1 -0.033 0.08l0.053 0.053A0.188 0.188 0 0 0 0.788 0.65zm-0.033 0.08A0.113 0.113 0 0 1 0.6 0.763v0.075a0.188 0.188 0 0 0 0.133 -0.055zM0.6 0.763a0.113 0.113 0 0 1 -0.08 -0.033l-0.053 0.053A0.188 0.188 0 0 0 0.6 0.838zm-0.08 -0.033A0.113 0.113 0 0 1 0.488 0.65h-0.075a0.188 0.188 0 0 0 0.055 0.133zM0.488 0.65c0 -0.012 0.006 -0.035 0.02 -0.067 0.013 -0.03 0.031 -0.064 0.05 -0.096a1.95 1.95 0 0 1 0.073 -0.116l0 0v0h0L0.6 0.35l-0.031 -0.021v0l0 0 0 0.001 -0.001 0.002a1.5 1.5 0 0 0 -0.022 0.033c-0.014 0.022 -0.033 0.052 -0.053 0.085a1.1 1.1 0 0 0 -0.054 0.103C0.425 0.585 0.413 0.621 0.413 0.65zM0.6 0.35l-0.031 0.021q0 0 0 0l0 0 0.001 0.002 0.005 0.007c0.004 0.006 0.01 0.015 0.017 0.025 0.014 0.021 0.032 0.051 0.051 0.082 0.018 0.032 0.036 0.065 0.05 0.096 0.014 0.032 0.02 0.055 0.02 0.067h0.075c0 -0.029 -0.012 -0.065 -0.027 -0.097a1.1 1.1 0 0 0 -0.054 -0.103 2 2 0 0 0 -0.075 -0.119l-0.001 -0.002 0 -0.001 0 0v0z" fill="#71717A"/></svg>
+
+          <h4 style="margin: 10px; font-size: 18px; color:black;">Hybrid Testing Framework</h4>
+        </div>
+        <div style="color:rgb(143, 143, 143); font-size: 15px; line-height: 1.5;">
+          <p>
+            Support both keyword driven and data driven testing methodologies, offering flexibility in test design and
+            execution.
+          </p>
+          <p>
+            Enables the creation of versatile and robust test cases that can handle various testing scenarios.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Card 4 -->
+      <div
+        style="
+          background: #fff;
+          border: 2px solid #6ecf94;
+          border-radius: 20px;
+          padding: 25px 30px;
+          box-shadow: 0 4px 12px rgba(0, 128, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+        <svg fill="#000000" width="40px" height="40px" viewBox="0 0 1.2 1.2" xmlns="http://www.w3.org/2000/svg"><path d="M0.15 0.2v0.8c0 0.143 0.375 0.15 0.45 0.15s0.45 -0.007 0.45 -0.15V0.2c0 -0.143 -0.375 -0.15 -0.45 -0.15s-0.45 0.007 -0.45 0.15m0.45 0.15a1.13 1.13 0 0 0 0.35 -0.048v0.289C0.894 0.639 0.674 0.65 0.6 0.65c-0.084 0 -0.299 -0.015 -0.35 -0.059V0.302A1.11 1.11 0 0 0 0.6 0.35m0.35 0.642c-0.026 0.022 -0.149 0.058 -0.35 0.058s-0.324 -0.037 -0.35 -0.058v-0.289A1.11 1.11 0 0 0 0.6 0.75a1.13 1.13 0 0 0 0.35 -0.048ZM0.936 0.2C0.86 0.238 0.694 0.25 0.6 0.25c-0.088 0 -0.258 -0.011 -0.336 -0.05A0.875 0.875 0 0 1 0.6 0.15a0.875 0.875 0 0 1 0.336 0.05"/></svg>
+          <h4 style="margin: 10px; font-size: 18px; color: black;">Streamline Automated API and DB Testing</h4>
+        </div>
+        <div style="color: rgb(143, 143, 143); font-size: 15px; line-height: 1.5;">
+          <p>
+            TestEnsure framework is a versatile solution designed to streamline both API and database (DB) testing.
+          </p>
+          <p>
+            TestEnsure provides a user-friendly, low-code interface that allows testers to create and manage API tests
+            without extensive coding knowledge.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Card 5 -->
+      <div
+        style="
+          background: #fff;
+          border: 2px solid #6ecf94;
+          border-radius: 20px;
+          padding: 25px 30px;
+          box-shadow: 0 4px 12px rgba(0, 128, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" style="enable-background:new 0 0 38.086 38.086;" xml:space="preserve"><g><path d="M29.881 14.781C29.881 6.63 23.251 0 15.101 0S0.32 6.63 0.32 14.781s6.629 14.779 14.779 14.779c8.151 0 14.781 -6.629 14.781 -14.779M15.101 25.85c-6.104 0 -11.069 -4.967 -11.069 -11.069 0 -6.104 4.967 -11.071 11.069 -11.071 6.104 0 11.07 4.967 11.07 11.071s-4.967 11.069 -11.07 11.069m24.579 10.883 -3.267 3.267 -11.356 -11.354 3.267 -3.267z"/></g></svg>
+          <h4 style="margin: 10px; font-size: 18px; color: black;">Comprehensive Traceability</h4>
+        </div>
+        <div style="color:rgb(143, 143, 143); font-size: 15px; line-height: 1.5;">
+          <p>
+            Maintain clear tracking of tests, requirements, and defects for compliance and audits.
+          </p>
+          <p>Ensures transparency and accountability in the testing process.</p>
+        </div>
+      </div>
+
+      <!-- Feature Card 6 -->
+      <div
+        style="
+          background: #fff;
+          border: 2px solid #6ecf94;
+          border-radius: 20px;
+          padding: 25px 30px;
+          box-shadow: 0 4px 12px rgba(0, 128, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+          <svg version="1.1" id="svg2" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" sodipodi:docname="dashboard.svg" inkscape:version="0.48.4 r9939" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" height="40px" viewBox="0 0 60 60" enable-background="new 0 0 1200 1200" xml:space="preserve"><sodipodi:namedview inkscape:cy="400.8742" inkscape:cx="495.48269" inkscape:zoom="0.52678571" showgrid="false" id="namedview30" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" bordercolor="#666666" pagecolor="#ffffff" inkscape:current-layer="svg2" inkscape:window-maximized="1" inkscape:window-y="24" inkscape:window-height="876" inkscape:window-width="1535" inkscape:pageshadow="2" inkscape:pageopacity="0" inkscape:window-x="65"/><path id="path5236" inkscape:connector-curvature="0" d="M30 9.769c-16.569 0 -30 13.431 -30 30 0 3.68 0.663 7.205 1.875 10.463h8.203C8.433 47.106 7.5 43.546 7.5 39.769c0 -12.426 10.074 -22.5 22.5 -22.5s22.5 10.074 22.5 22.5c0 3.777 -0.933 7.337 -2.578 10.463H58.125c1.212 -3.257 1.875 -6.783 1.875 -10.463 0 -16.569 -13.431 -30 -30 -30m0 11.781c-2.071 0 -3.75 1.679 -3.75 3.75s1.679 3.75 3.75 3.75 3.75 -1.679 3.75 -3.75 -1.679 -3.75 -3.75 -3.75m-11.246 3.673c-2.071 0 -3.75 1.679 -3.75 3.75s1.679 3.75 3.75 3.75 3.75 -1.679 3.75 -3.75 -1.679 -3.75 -3.75 -3.75m22.493 0c-2.071 0 -3.75 1.679 -3.75 3.75s1.679 3.75 3.75 3.75 3.75 -1.679 3.75 -3.75 -1.679 -3.75 -3.75 -3.75M30 32.584l-2.941 14.707v2.941h5.881v-2.941z"/></svg>
+          <h4 style="margin: 10px; font-size: 18px; color: black;">Dashboards and Reporting</h4>
+        </div>
+        <div style="color:rgb(143, 143, 143); font-size: 15px; line-height: 1.5;">
+          <p>Utilize real time analytics to monitor test suite performance and gain actionable insights.
+          </p>
+          <p>Provides a comprehensive view of testing activities, helping in strategic planning and decision making.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Card 7 -->
+      <div
+        style="
+          background: #fff;
+          border: 2px solid #6ecf94;
+          border-radius: 20px;
+          padding: 25px 30px;
+          box-shadow: 0 4px 12px rgba(0, 128, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+         <svg width="40px" height="40px" viewBox="0 0 0.8 0.8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#444" d="M0.7 0.6a0.1 0.1 0 1 1 -0.2 0A0.1 0.1 0 0 1 0.7 0.6"/><path fill="#444" d="M0.585 0.8c-0.04 0 -0.08 -0.01 -0.115 -0.035L0.16 0.6c-0.025 -0.02 -0.045 -0.03 -0.065 -0.05C0.035 0.49 0 0.405 0 0.32s0.035 -0.165 0.095 -0.225S0.235 0 0.32 0 0.485 0.035 0.55 0.095c0.02 0.02 0.03 0.035 0.05 0.06l0.175 0.32c0.05 0.085 0.035 0.19 -0.035 0.26 -0.045 0.045 -0.095 0.065 -0.155 0.065M0.32 0.05C0.25 0.05 0.18 0.08 0.13 0.13S0.05 0.25 0.05 0.32c0 0.075 0.03 0.14 0.08 0.19 0.015 0.015 0.03 0.025 0.055 0.04l0.315 0.17c0.03 0.02 0.06 0.025 0.09 0.025 0.045 0 0.085 -0.015 0.115 -0.05 0.055 -0.055 0.065 -0.135 0.025 -0.2l-0.175 -0.32c-0.015 -0.02 -0.025 -0.035 -0.04 -0.05C0.46 0.08 0.395 0.05 0.32 0.05"/><path fill="#444" d="M0.55 0.35V0.3l-0.07 -0.025c-0.005 -0.01 -0.005 -0.015 -0.01 -0.025l0.03 -0.065 -0.035 -0.035 -0.065 0.03c-0.01 -0.005 -0.015 -0.005 -0.025 -0.01L0.35 0.1H0.3l-0.025 0.07c-0.01 0.005 -0.015 0.005 -0.025 0.01L0.185 0.15l-0.035 0.035 0.03 0.065c-0.005 0.01 -0.005 0.015 -0.01 0.025L0.1 0.3v0.05l0.07 0.025c0.005 0.01 0.005 0.015 0.01 0.025L0.15 0.465l0.035 0.035L0.25 0.47c0.01 0.005 0.015 0.01 0.025 0.01L0.3 0.55h0.05l0.025 -0.07c0.01 -0.005 0.015 -0.005 0.025 -0.01l0.065 0.03 0.035 -0.035L0.47 0.4c0.005 -0.01 0.01 -0.015 0.01 -0.025zM0.325 0.4C0.285 0.4 0.25 0.365 0.25 0.325S0.285 0.25 0.325 0.25 0.4 0.285 0.4 0.325 0.365 0.4 0.325 0.4"/></svg>
+          <h4 style="margin: 10px; font-size: 18px; color:black;">Automation of Test Data Creation</h4>
+        </div>
+        <div style="color:rgb(143, 143, 143); font-size: 15px; line-height: 1.5;">
+          <p>
+            The TestEnsure Framework offers robust features for automating test data creation, which can significantly
+            streamline your testing process.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Card 8 -->
+      <div
+        style="
+          background: #fff;
+          border: 2px solid #6ecf94;
+          border-radius: 20px;
+          padding: 25px 30px;
+          box-shadow: 0 4px 12px rgba(0, 128, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+          <svg width="40px" height="40px" viewBox="0 0 1.2 1.2" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0.4 0.442a0.15 0.15 0 1 0 -0.1 0v0.317a0.15 0.15 0 1 0 0.1 0zM0.35 0.25a0.05 0.05 0 1 0 0 0.1 0.05 0.05 0 0 0 0 -0.1m0 0.6a0.05 0.05 0 1 0 0 0.1 0.05 0.05 0 0 0 0 -0.1m0.45 -0.092V0.442a0.15 0.15 0 1 1 0.1 0v0.317a0.15 0.15 0 1 1 -0.1 0M0.8 0.9a0.05 0.05 0 1 1 0.1 0 0.05 0.05 0 0 1 -0.1 0m0.05 -0.65a0.05 0.05 0 1 0 0 0.1 0.05 0.05 0 0 0 0 -0.1" fill="#000000"/></svg>
+          <h4 style="margin: 10px; font-size: 18px; color:black;">Parallel Execution</h4>
+        </div>
+        <div style="color:rgb(143, 143, 143); font-size: 15px; line-height: 1.5;">
+          <p>
+            Run multiple test suites simultaneously to enhance testing efficiency and reduce overall execution time.
+          </p>
+          <p>Supports large scale testing efforts and accelerates the feedback loop.</p>
+        </div>
+      </div>
+
+      <!-- Feature Card 9 -->
+      <div
+        style="
+          background: #fff;
+          border: 2px solid #6ecf94;
+          border-radius: 20px;
+          padding: 25px 30px;
+          box-shadow: 0 4px 12px rgba(0, 128, 0, 0.05);
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+          <svg fill="#000000" width="40px" height="40px" viewBox="0 0 1.2 1.2" xmlns="http://www.w3.org/2000/svg"><path d="M1 0.965V0.825a0.025 0.025 0 1 1 0.05 0v0.2a0.025 0.025 0 0 1 -0.025 0.025h-0.2a0.025 0.025 0 1 1 0 -0.05h0.14l-0.157 -0.157a0.025 0.025 0 0 1 0.035 -0.035zM0.2 0.235V0.375a0.025 0.025 0 0 1 -0.05 0v-0.2a0.025 0.025 0 0 1 0.025 -0.025h0.2a0.025 0.025 0 0 1 0 0.05H0.235l0.157 0.157a0.025 0.025 0 1 1 -0.035 0.035zM0.235 1H0.375a0.025 0.025 0 1 1 0 0.05h-0.2a0.025 0.025 0 0 1 -0.025 -0.025v-0.2a0.025 0.025 0 1 1 0.05 0v0.14l0.157 -0.157a0.025 0.025 0 0 1 0.035 0.035zM0.965 0.2H0.825a0.025 0.025 0 1 1 0 -0.05h0.2a0.025 0.025 0 0 1 0.025 0.025v0.202a0.025 0.025 0 1 1 -0.05 0V0.235l-0.157 0.157a0.025 0.025 0 0 1 -0.035 -0.035zM0.4 0.525a0.125 0.125 0 0 1 0.125 -0.125l0.15 0a0.125 0.125 0 0 1 0.125 0.125V0.675a0.125 0.125 0 0 1 -0.125 0.125h-0.15A0.125 0.125 0 0 1 0.4 0.675zm0.05 0V0.675a0.075 0.075 0 0 0 0.075 0.075h0.15a0.075 0.075 0 0 0 0.075 -0.075v-0.151a0.075 0.075 0 0 0 -0.075 -0.075l-0.15 0A0.075 0.075 0 0 0 0.45 0.525"/></svg>
+          <h4 style="margin: 10px; font-size: 18px; color: black;">Scalable Architecture</h4>
+        </div>
+        <div style="color:rgb(143, 143, 143); font-size: 15px; line-height: 1.5;">
+          <p>
+            Adapt test suites according to changes in project size and complexity, ensuring scalability and robustness.
+          </p>
+          <p>Supports growth and evolution of projects without requiring significant rework in testing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Responsive Styles -->
+<style>
+  @media (max-width: 1024px) {
+    section div[style*="display: grid"] {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    section {
+      padding: 60px 20px !important;
+    }
+
+    section div[style*="display: grid"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    section h2 {
+      font-size: 36px !important;
+    }
+
+    section p {
+      font-size: 14px !important;
+    }
+
+    section h4 {
+      font-size: 16px !important;
+    }
+  }
+</style>
+
+<!line3!>
+<!line4!>
+<link href="https://fonts.googleapis.com/css2?family=Fustat&display=swap" rel="stylesheet" />
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fustat', sans-serif;
+  }
+
+  .automate-section {
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px 20px;
+  }
+
+  .automate-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 80px 30px;
+    transition: all 0.4s ease;
+  }
+
+  .automate-left,
+  .automate-right {
+    flex: 1;
+    min-width: 300px;
+    transition: transform 0.4s ease;
+  }
+
+  .automate-left.shift-left {
+    transform: translateX(-50px);
+  }
+
+  .automate-right.shift-right {
+    transform: translateX(50px);
+  }
+
+  .automate-title {
+    font-weight: 300;
+    font-size: 3rem;
+    color: rgb(4, 42, 45);
+    line-height: 1.2;
+  }
+
+  .automate-highlight {
+    background-image: linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+  }
+
+  .automate-desc {
+    font-size: 1rem;
+    color: rgb(143, 143, 143);
+    margin-bottom: 30px;
+  }
+
+  .automate-button {
+    background-color: #32cd7a;
+    padding: 12px 24px;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  .automate-popup-column {
+    flex: 1 1 100%;
+    max-width: 800px;
+    display: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .automate-popup-column.active {
+    display: block;
+  }
+
+  .arrow {
+    transition: transform 0.3s ease;
+    margin-left: auto;
+    max-width: 16px;
+    height: auto;
+  }
+
+  .coaching-wrapper.active .arrow1 {
+    transform: rotate(90deg);
+  }
+
+  .coaching-wrapper.active .arrow {
+    transform: rotate(120deg);
+  }
+
+  .coaching-popup {
+    background: linear-gradient(267.43deg, rgb(115, 237, 124) 4.95%, rgb(1, 146, 151) 97.92%);
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .coaching-popup h4 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .coaching-popup p {
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 10px 0;
+  }
+
+  .coaching-grid {
+    display: grid;
+    margin-top: 60px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .coaching-wrapper {
+    cursor: pointer;
+  }
+
+  .coaching-pill {
+    background: #fff;
+    border-radius: 30px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .coaching-pill img,
+  .coaching-pill svg {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .coaching-pill span {
+    margin-left: 20px;
+    flex-grow: 1;
+    font-size: 1rem;
+    color: #000;
+  }
+
+  .coaching-hidden {
+    display: none;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .automate-container {
+      flex-direction: column;
+      padding: 40px 20px;
+    }
+
+    .automate-popup-column {
+      order: 2;
+      margin: 20px 0;
+    }
+
+    .automate-title {
+      font-size: 2.25rem;
+    }
+
+    .coaching-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .automate-left.shift-left,
+    .automate-right.shift-right {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .automate-title {
+      font-size: 1.75rem;
+    }
+
+    .automate-button {
+      width: 100%;
+      text-align: center;
+    }
+
+    .coaching-pill {
+      flex-direction: row;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .coaching-pill span {
+      flex: 1 1 100%;
+      margin-left: 0;
+      margin-top: 8px;
+    }
+  }
+</style>
+
+<section class="automate-section">
+  <div class="automate-container" id="automateContainer">
+
+    <!-- Left Column -->
+    <div class="automate-left" id="leftContent">
+      <p class="automate-title">
+        What You Can <span class="automate-highlight">Automate?</span>
+      </p>
+      <p class="automate-desc">
+        Any application undergoes various types of testing to ensure its functionality, performance, security,
+        and reliability. Here are some of the different kinds of testing commonly performed in Automation
+        implementations.
+      </p>
+      <a href="#" class="automate-button">Contact Now →</a>
+    </div>
+
+    <!-- Center Column (Popup) -->
+    <div class="automate-popup-column" id="popupColumn">
+      <div class="coaching-popup" id="activePopup"></div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="automate-right" id="rightContent">
+      <div class="coaching-grid">
+        <!-- Card 1 -->
+        <div class="coaching-wrapper" onclick="showPopup(event, this)">
+          <div class="coaching-pill">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 40 40" style="enable-background:new 0 0 32 32;" xml:space="preserve" width="40" height="40"><path id="integration_1_" d="M29.375 36.7H10.624a0.453 0.453 0 0 1 -0.389 -0.227L0.86 20.212a0.453 0.453 0 0 1 0 -0.451L10.235 3.524a0.453 0.453 0 0 1 0.389 -0.224h18.751a0.453 0.453 0 0 1 0.389 0.225l9.375 16.237a0.453 0.453 0 0 1 0 0.451l-9.375 16.263a0.453 0.453 0 0 1 -0.389 0.225m-17.969 -0.9h17.191L20 20.9zm9.367 -15.361 8.603 14.911 8.596 -14.911zm-18.744 0 8.597 14.911 8.603 -14.911zm18.759 -0.9h17.183L29.375 4.651zm-18.756 0h17.185L10.625 4.651zM11.405 4.203 20 19.1 28.596 4.2z"/><path id="_Transparent_Rectangle" style="fill:none;" width="32" height="32" d="M0 0h40v40H0z"/></svg>   <span>Integration and API Testing</span><img class="arrow1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN_4UBLdr2DLApx9jKRHCp2m16xFzeN1R2gw&s" alt="Arrow Icon">
+          </div>
+          <div class="coaching-hidden">
+            <h4>Integration Testing</h4>
+            <p>Ensure seamless functioning of interconnected software systems by verifying that different modules and services work together as intended.</p>
+            <p>Detect and resolve integration issues early, ensuring smooth communication and data flow between components.</p>
+            <h4>API Testing</h4>
+            <p>Automate the verification of API responses and behaviors extensively, ensuring that APIs function correctly and reliably.</p>
+            <p>Validate endpoints, data formats, response times, and error handling to ensure robust API performance.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="coaching-wrapper" onclick="showPopup(event, this)">
+          <div class="coaching-pill">
+            <svg width="40px" height="40px" viewBox="0 0 51.2 51.2" fill="#000000" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M11.504 0.898c-6.269 0 -11.375 5.099 -11.375 11.375s5.106 11.375 11.375 11.375 11.375 -5.106 11.375 -11.375S17.78 0.898 11.504 0.898M39.553 28.207c-6.269 0 -11.375 5.106 -11.375 11.375s5.106 11.375 11.375 11.375c6.276 0 11.375 -5.106 11.375 -11.375S45.829 28.207 39.553 28.207m0 18.448c-3.899 0 -7.066 -3.174 -7.066 -7.066s3.174 -7.066 7.066 -7.066c3.899 0 7.066 3.174 7.066 7.066s-3.167 7.066 -7.066 7.066M20.724 28.451H2.284c-1.192 0 -2.154 0.962 -2.154 2.154v18.441c0 1.192 0.962 2.154 2.154 2.154h18.441c1.192 0 2.154 -0.962 2.154 -2.154V30.605c0 -1.192 -0.962 -2.154 -2.154 -2.154m-2.154 18.441H4.438V32.759h14.132zm20.229 -22.347c0.553 0 1.106 -0.208 1.522 -0.632l10.118 -10.118c0.402 -0.402 0.632 -0.955 0.632 -1.522s-0.23 -1.12 -0.632 -1.522L40.321 0.632a2.154 2.154 0 0 0 -3.045 0L27.158 10.75a2.154 2.154 0 0 0 0 3.045L37.276 23.913c0.424 0.417 0.977 0.632 1.522 0.632m0 -19.346 7.073 7.073 -7.073 7.073 -7.073 -7.073z"/></svg>
+
+            <span>Functional Testing</span><img class="arrow" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN_4UBLdr2DLApx9jKRHCp2m16xFzeN1R2gw&s" alt="Arrow Icon">
+          </div>
+          <div class="coaching-hidden">
+            <h4>Functional Testing</h4>
+            <p>Validate that the software aligns with specified functionality requirements clearly and accurately.</p>
+            <p>Test individual features and functionalities to ensure they perform as expected and meet user needs.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="coaching-wrapper" onclick="showPopup(event, this)">
+          <div class="coaching-pill">
+<svg width="40px" height="40px" viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg"><g id="layer1"><path d="M0 0.1v0.8h1v-0.05H0.05V0.1zm0.723 0.15 -0.053 0.053h0.141L0.52 0.595l-0.184 -0.092a0.025 0.025 0 0 0 -0.029 0.005l-0.2 0.2c-0.025 0.024 0.012 0.06 0.035 0.035L0.33 0.555l0.184 0.092a0.025 0.025 0 0 0 0.029 -0.005l0.304 -0.304v0.141L0.9 0.427V0.25z" style="fill:#222222;fill-opacity:1;stroke:none;stroke-width:0px;"/></g></svg>
+            <span>Regression Testing</span><img class="arrow" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN_4UBLdr2DLApx9jKRHCp2m16xFzeN1R2gw&s" alt="Arrow Icon">
+          </div>
+          <div class="coaching-hidden">
+            <h4>Regression Testing</h4>
+            <p>Detect any new software defects introduced after updates or changes using automated testing.</p>
+            <p>Ensure that existing functionalities remain unaffected by new code changes, maintaining overall software stability.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="coaching-wrapper" onclick="showPopup(event, this)">
+          <div class="coaching-pill">
+            <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="40" height="40" viewBox="0 0 40 40" id="svg2" version="1.1" inkscape:version="0.91 r13725" sodipodi:docname="security-unlock.svg"><title id="title3402">security-unlock</title><defs id="defs4"><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-2"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-7"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-77"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-1"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-8"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-9"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-22"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-26"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-0"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-3"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-75"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-4"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-78"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-6"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-5"/><pattern y="0" x="0" height="6" width="6" patternUnits="userSpaceOnUse" id="EMFhbasepattern-62"/></defs><sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="1" inkscape:cx="236.17581" inkscape:cy="258.80305" inkscape:document-units="px" inkscape:current-layer="layer1" showgrid="true" inkscape:snap-bbox="true" inkscape:bbox-nodes="true" units="px" inkscape:window-width="1051" inkscape:window-height="937" inkscape:window-x="442" inkscape:window-y="442" inkscape:window-maximized="0" inkscape:snap-nodes="true" inkscape:snap-intersection-paths="true" inkscape:object-nodes="true" inkscape:snap-global="true" inkscape:snap-others="false" inkscape:snap-grids="true" inkscape:object-paths="true"><inkscape:grid type="xygrid" id="grid3336" spacingx="16" spacingy="16" empspacing="2"/></sodipodi:namedview><metadata id="metadata7"><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title>security-unlock</dc:title></cc:Work></rdf:RDF></metadata><g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(0 -604.362)"><flowRoot xml:space="preserve" id="flowRoot3338" style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" transform="translate(0 698.032)"><flowRegion id="flowRegion3340"><path id="rect3342" width="360" height="360" x="0" y="-5.669281" d="M0 -0.506H32.143V31.637H0V-0.506z"/></flowRegion><flowPara id="flowPara3344"/></flowRoot><flowRoot xml:space="preserve" id="flowRoot3371" style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><flowRegion id="flowRegion3373"><path id="rect3375" width="85" height="85" x="5" y="5" d="M0.446 0.446H8.036V8.036H0.446V0.446z"/></flowRegion><flowPara id="flowPara3377"/></flowRoot><flowRoot xml:space="preserve" id="flowRoot3404" style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><flowRegion id="flowRegion3406"><path id="rect3408" width="65" height="50" x="15" y="20" d="M1.339 1.786H7.143V6.25H1.339V1.786z"/></flowRegion><flowPara id="flowPara3410"/></flowRoot><flowRoot xml:space="preserve" id="flowRoot3437" style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><flowRegion id="flowRegion3439"><path id="rect3441" width="80" height="75" x="5" y="5" d="M0.446 0.446H7.589V7.143H0.446V0.446z"/></flowRegion><flowPara id="flowPara3443"/></flowRoot><text sodipodi:linespacing="125%" id="text3481" y="1009.7125" x="51.231663" style="font-style:normal;font-variant:normal;font-weight:400;font-size:13.8125px;line-height:125%;font-family:Calibri;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none" xml:space="preserve"><tspan id="tspan3483" y="0" x="0" sodipodi:role="line"><tspan id="tspan3485" style="font-style:normal;font-variant:normal;font-weight:400;font-size:13.8125px;font-family:Calibri;fill:#000000" dy="0" dx="0"/></tspan></text><text sodipodi:linespacing="125%" id="text3698" y="1080.1998" x="82.929802" style="font-style:normal;font-variant:normal;font-weight:400;font-size:13.8125px;line-height:125%;font-family:Calibri;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none" xml:space="preserve"><tspan id="tspan3700" y="0" x="0" sodipodi:role="line"><tspan id="tspan3702" style="font-style:normal;font-variant:normal;font-weight:400;font-size:13.8125px;font-family:Calibri;fill:#000000" dy="0" dx="0"/></tspan></text><g style="font-style:normal;font-variant:normal;font-weight:400;font-size:13.8125px;line-height:125%;font-family:Calibri;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill-opacity:1;stroke:none" id="text3857" transform="matrix(6.2024 0 0 6.13018 124.048 -5115.083)"/><path style="fill-opacity:1;stroke:none;stroke-width:64;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M30 0c-4.749 0 -8.571 3.823 -8.571 8.571v8.571H2.857c-1.583 0 -2.857 1.274 -2.857 2.857v20h28.571V20c0 -1.583 -1.274 -2.857 -2.857 -2.857V8.571c0 -2.374 1.911 -4.286 4.286 -4.286h1.429c2.374 0 4.236 1.912 4.286 4.286v8.571h4.286V8.571c0 -4.749 -3.823 -8.571 -8.571 -8.571zM14.286 22.857a2.857 2.857 0 0 1 2.857 2.857 2.857 2.857 0 0 1 -1.641 2.582L17.092 34.286H11.429l1.595 -6.012A2.857 2.857 0 0 1 11.429 25.714a2.857 2.857 0 0 1 2.857 -2.857" transform="translate(0 604.362)" id="rect3376"/></g></svg>
+            <span>Security Testing</span><img class="arrow" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN_4UBLdr2DLApx9jKRHCp2m16xFzeN1R2gw&s" alt="Arrow Icon">
+          </div>
+          <div class="coaching-hidden">
+            <h4>Security Testing</h4>
+            <p>Identify vulnerabilities and ensure robust data protection measures are in place.</p>
+            <p>Test for potential security threats, such as SQL injection, cross-site scripting (XSS), and data breaches, to safeguard sensitive information.</p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="coaching-wrapper" onclick="showPopup(event, this)">
+          <div class="coaching-pill">
+          <svg width="40px" height="40px" viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg"><path d="M0.2 0.35a0.05 0.05 0 0 1 0.05 0.05v0.4a0.05 0.05 0 1 1 -0.1 0V0.4a0.05 0.05 0 0 1 0.05 -0.05" fill="#5C5F62"/><path d="M0.4 0.55a0.05 0.05 0 0 1 0.05 0.05v0.2a0.05 0.05 0 1 1 -0.1 0v-0.2a0.05 0.05 0 0 1 0.05 -0.05" fill="#5C5F62"/><path d="M0.6 0.15a0.05 0.05 0 0 1 0.05 0.05v0.6a0.05 0.05 0 1 1 -0.1 0V0.2a0.05 0.05 0 0 1 0.05 -0.05" fill="#5C5F62"/><path d="M0.8 0.35a0.05 0.05 0 0 1 0.05 0.05v0.4a0.05 0.05 0 1 1 -0.1 0V0.4a0.05 0.05 0 0 1 0.05 -0.05" fill="#5C5F62"/></svg>
+            <span>Data-Driven Testing</span><img class="arrow" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN_4UBLdr2DLApx9jKRHCp2m16xFzeN1R2gw&s" alt="Arrow Icon">
+          </div>
+          <div class="coaching-hidden">
+            <h4>Data-Driven Testing</h4>
+            <p>Utilize varying data inputs to validate software effectiveness thoroughly.</p>
+            <p>Test how the application handles different data sets, ensuring it performs correctly under various conditions and scenarios.</p>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="coaching-wrapper" onclick="showPopup(event, this)">
+          <div class="coaching-pill">
+            <img src="https://cdn-icons-png.flaticon.com/512/5277/5277464.png" alt="icon">
+            <span>ERP Testing</span><img class="arrow1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN_4UBLdr2DLApx9jKRHCp2m16xFzeN1R2gw&s" alt="Arrow Icon">
+          </div>
+          <div class="coaching-hidden">
+            <h4>ERP Integration Testing</h4>
+            <p>Ensure seamless connections between ERP modules and third-party applications.</p>
+            <p>Verify that data flows correctly between ERP systems and external applications, ensuring integrated processes function smoothly.</p>
+            <h4>ERP Functional Testing</h4>
+            <p>Verify that ERP functionality aligns with business requirements effectively.</p>
+<p>Test core ERP modules, such as finance, HR, and supply chain, to ensure they meet organizational needs and perform as expected.</p>
+            <h4>ERP Regression Testing</h4>
+            <p>Check for unintended effects of changes during ERP updates and enhancements.</p>
+<p>Ensure that new updates do not disrupt existing ERP functionalities, maintaining system integrity and performance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> <script>
+const leftContent = document.getElementById('leftContent');
+const rightContent = document.getElementById('rightContent');
+const popupColumn = document.getElementById('popupColumn');
+const activePopup = document.getElementById('activePopup');
+
+let currentActive = null;
+
+function showPopup(event, wrapper) {
+  event.stopPropagation();
+
+  // If the same card is clicked again, toggle it off
+  if (currentActive === wrapper) {
+    closePopup();
+    return;
+  }
+
+  // Otherwise, show this one
+  const hiddenContent = wrapper.querySelector('.coaching-hidden');
+  if (hiddenContent) {
+    activePopup.innerHTML = hiddenContent.innerHTML;
+    popupColumn.classList.add('active');
+    leftContent.classList.add('shift-left');
+    rightContent.classList.add('shift-right');
+
+    // Set active class for arrow toggle
+    document.querySelectorAll('.coaching-wrapper').forEach(el => el.classList.remove('active'));
+    wrapper.classList.add('active');
+
+    currentActive = wrapper;
+  }
+}
+
+function closePopup() {
+  popupColumn.classList.remove('active');
+  activePopup.innerHTML = '';
+  leftContent.classList.remove('shift-left');
+  rightContent.classList.remove('shift-right');
+
+  document.querySelectorAll('.coaching-wrapper').forEach(el => el.classList.remove('active'));
+  currentActive = null;
+}
+
+// Close when clicking anywhere else
+document.addEventListener('click', function (e) {
+  if (!e.target.closest('.coaching-wrapper') && !e.target.closest('#popupColumn')) {
+    closePopup();
+  }
+});
+</script>
+<!line4!>
+<!line5!>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Fustat', sans-serif;
+    }
+
+    .feature-section {
+      padding: 10vw 2vw 10vw 3vw;
+      background-image: url('https://img.freepik.com/premium-photo/black-background-with-grey-hexagons-left-side_1202914-53615.jpg');
+      background-repeat: no-repeat;
+      background-size: cover; /* Keep same image size */
+      background-position: 40% center; /* Move image to left */
+      color: white;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      border-radius: 30px;
+      margin: 22.5px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .feature-container {
+      width: 100%;
+      max-width: 1200px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .feature-container h2 {
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      font-weight: 300;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .feature-highlight {
+      background: linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .feature-container p {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      margin-bottom: 40px;
+      color: white;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .feature-card {
+      flex: 0 0 calc(33.333% - 20px);
+      padding: 20px;
+      border-radius: 10px;
+      min-height: 180px;
+      box-sizing: border-box;
+      text-align: left;
+      background: transparent;
+    }
+
+    .feature-card h4 {
+      margin: 0 0 10px;
+      color: white;
+      font-weight: 700;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+    }
+
+    .feature-card p {
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      font-weight: 400;
+      color: white;
+      line-height: 1.4;
+      margin: 0 0 5px;
+    }
+
+    .feature-card img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .contact-button {
+      margin-top: 40px;
+    }
+
+    .contact-button a {
+      background: #31c781;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: bold;
+      font-size: clamp(0.9rem, 1.8vw, 1rem);
+    }
+
+    /* Tablets */
+    @media (max-width: 992px) {
+      .feature-section {
+        padding: 12vw 8vw;
+        background-position: 10% center;
+      }
+
+      .feature-card {
+        flex: 0 0 48%;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .feature-section {
+        padding: 15vw 6vw;
+        background-position: 15% center;
+      }
+
+      .feature-container {
+        padding: 0;
+      }
+
+      .feature-card {
+        flex: 0 0 100%;
+      }
+
+      .contact-button a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="feature-section">
+    <div class="feature-container">
+      <h2>
+        Transform <span class="feature-highlight">your Automation <br> Testing Experience</span>
+      </h2>
+      <p>by using pre-built and re-usable test automation scripts for multiple modules</p>
+      <div class="feature-grid">
+        <!-- Card 1 -->
+        <div class="feature-card">
+          <img src="https://static.vecteezy.com/system/resources/previews/034/788/735/non_2x/rapid-application-development-software-line-icon-illustration-vector.jpg" alt="Rapid Deployment">
+          <h4>01. Rapid Deployment</h4>
+          <p>Utilize ready-made test cases for faster implementation in ERP projects.</p>
+          <p>Accelerate the testing process, reducing time-to-market.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="feature-card">
+          <img src="https://static.vecteezy.com/system/resources/previews/023/233/339/non_2x/settings-icon-customize-illustration-sign-mechanical-symbol-vector.jpg" alt="Customize Options">
+          <h4>02. Customize Options</h4>
+          <p>Tailor pre-built cases to meet specific ERP and CRM requirements.</p>
+          <p>Ensure that test cases align with unique business processes and needs.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="feature-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwAKwUZb28lsA52h4izYyEQC7H4LJ98FnruA&s" alt="Comprehensive Coverage">
+          <h4>03. Comprehensive Coverage</h4>
+          <p>Address multiple testing types, such as functional and integration, seamlessly.</p>
+          <p>Ensure thorough validation of ERP and CRM systems.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="feature-card">
+          <img src="https://t3.ftcdn.net/jpg/05/72/87/50/360_F_572875001_wyM2zmjciLpdf4xOdMW04qgOLIFPEXRa.jpg" alt="Enhanced Accuracy">
+          <h4>04. Enhanced Accuracy</h4>
+          <p>Reduce errors through validated test cases designed specifically for ERP systems.</p>
+          <p>Improve the reliability and quality of testing outcomes.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="feature-card">
+          <img src="https://t3.ftcdn.net/jpg/09/72/83/68/360_F_972836891_ZIEC2ofPoKuO7GQgXrXDrweoR2MaRaLE.jpg" alt="Continuous Improvement">
+          <h4>05. Continuous Improvement</h4>
+          <p>Easily update test cases as business processes evolve or change.</p>
+          <p>Maintain relevance and effectiveness of test cases over time.</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="feature-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpdFrB7YpdGoZUCaf-cqNzUY_kyWh0z2Opdw&s" alt="Streamlined Audit Trail">
+          <h4>06. Streamlined Audit Trail</h4>
+          <p>Maintain clear logs of testing activities for compliance purposes.</p>
+          <p>Ensure traceability and accountability in the testing process.</p>
+        </div>
+      </div>
+
+      <div class="contact-button">
+        <a href="#">Contact Us →</a>
+      </div>
+    </div>
+  </section>
+</body>
+
+<!1ine5!>
+<!line6!>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Fustat&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  section {
+    position: relative;
+    padding-top: 77.5px; padding-bottom:100px;padding-left:272.5px;padding-right:272.5px;
+    min-height: 700px;
+    font-family: 'Fustat', sans-serif;
+  }
+
+  .watch-button {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+    z-index: 3;
+  }
+
+  .watch-button a {
+    display: inline-flex;
+    align-items: center;
+    background: #30d179;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    font-size: 16px;
+  }
+
+  .top-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .top-text {
+    margin-top:0px;
+  }
+
+  .top-text h2 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2em;
+    background: linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  .top-text p {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(143, 143, 143);
+    line-height: 27.2px;
+  }
+
+  .feature-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 60px;
+  }
+
+  .feature-box {
+    flex: 1;
+    min-width: 280px;
+    max-width: 500px; background-color:#f8f8f8;
+  }
+
+  .feature-icon {
+    background-image: linear-gradient(to right, #019297 0%, #73ED7C 50%, #019297 100%);
+    background-size: 200% auto;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 30px;
+  }
+
+  .feature-icon img {
+    height: 35px;
+    width: 35px;
+  }
+
+  .feature-box h3 {
+    color: black;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30.8px;
+    margin-top: 0;
+  }
+
+  .feature-box p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height:1.7em;
+  }
+
+  .feature-box hr {
+    border: none;
+    height: 1px;
+    background-color: black;
+    opacity: 0.5;
+    margin: 0 0 15px;
+  }
+
+  /* Tablets */
+  @media (max-width: 1024px) {
+    section {
+      padding: 50px 40px;
+    }
+
+    .top-text h2 {
+      font-size: 36px;
+    }
+
+    .watch-button {
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  /* Phones */
+  @media (max-width: 600px) {
+    section {
+      padding: 40px 20px;
+    }
+
+    .top-text h2 {
+      font-size: 28px;
+    }
+.feature-box {
+  box-shadow: none !important;
+}
+
+    .watch-button a {
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+
+    .feature-box {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<section>
+  <!-- Watch Video Button -->
+  <div class="watch-button">
+    <a href="#">▶️&nbsp;Watch Video</a>
+  </div>
+
+  <!-- Top Section -->
+  <div class="top-content">
+    <div class="top-text">
+      <h2>Automate. Accelerate. Achieve</h2>
+      <p style=" width: 1000px;">
+        Elevate Your Testing Processes: Transform your testing approach with TestEnsure’s state-of-the-art automation platform. Designed to streamline and enhance every aspect of your testing workflow, TestEnsure offers a user-friendly interface, extensive compatibility, and cutting-edge technology.
+      </p>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="feature-columns">
+    <!-- Box 1 -->
+    <div class="feature-box">
+      <div class="feature-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/880/880594.png" alt="User-Friendly Icon" />
+      </div>
+      <hr />
+      <h3>01. User-Friendly Interface</h3>
+      <p><span style="color:black;">Intuitive Design:</span> Navigate effortlessly through TestEnsure’s clean and intuitive interface. Whether you’re a seasoned tester or new to automation, the platform is designed to be accessible and easy to use.</p>
+      <p><span style="color:black;">Customizable Dashboards:</span> Tailor your workspace to fit your needs with customizable dashboards that provide a clear overview of test results, progress, and key metrics.</p>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="feature-box">
+      <div class="feature-icon">
+        <svg fill="#000000" width="40px" height="40px" viewBox="0 0 1.2 1.2" version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg"><path d="M0.813 0.563c0.018 0 0.035 0.007 0.049 0.02 0.027 0.017 0.038 -0.002 0.038 -0.02V0.475c0 -0.041 -0.034 -0.075 -0.075 -0.075h-0.138c-0.018 0 -0.036 -0.011 -0.02 -0.038 0.012 -0.014 0.02 -0.031 0.02 -0.049 0 -0.048 -0.05 -0.088 -0.113 -0.088s-0.113 0.039 -0.113 0.088c0 0.015 0.005 0.029 0.013 0.041 0.025 0.034 0.007 0.046 -0.013 0.046H0.325C0.284 0.4 0.25 0.434 0.25 0.475v0.088c0 0.02 0.013 0.038 0.046 0.012 0.012 -0.007 0.026 -0.012 0.041 -0.012 0.048 0 0.088 0.05 0.088 0.113s-0.039 0.113 -0.088 0.113c-0.018 0 -0.035 -0.007 -0.049 -0.02 -0.027 -0.017 -0.038 0.002 -0.038 0.02v0.138c0 0.041 0.034 0.075 0.075 0.075h0.138c0.02 0 0.038 -0.013 0.012 -0.046a0.08 0.08 0 0 1 -0.012 -0.041c0 -0.048 0.05 -0.088 0.113 -0.088s0.113 0.039 0.113 0.088c0 0.018 -0.007 0.035 -0.02 0.049 -0.017 0.028 0.002 0.038 0.02 0.038h0.138c0.041 0 0.075 -0.034 0.075 -0.075v-0.138c0 -0.02 -0.013 -0.038 -0.046 -0.012a0.08 0.08 0 0 1 -0.041 0.012c-0.048 0 -0.088 -0.05 -0.088 -0.113s0.039 -0.113 0.088 -0.113"/></svg>
+      </div>
+      <hr />
+      <h3>02. Extensive Compatibility</h3>
+      <p><span style="color:black;">Cross-Browser and Cross-Platform Testing:</span> Ensure your application works seamlessly across different browsers, devices, and operating systems. TestEnsure supports a wide range of environments, ensuring comprehensive test coverage.</p>
+      <p><span style="color:black;">Integration with Popular Tools:</span> Seamlessly integrate with your existing toolchain, including CI/CD pipelines, version control systems, and project management tools. This ensures a smooth and efficient workflow.</p>
+    </div>
+
+    <!-- Box 3 -->
+    <div class="feature-box">
+      <div class="feature-icon">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyFSDvZA27CPTHnxlnq8vd-pfw0vcsNGFafA&s" alt="Technology Icon" />
+      </div>
+      <hr />
+      <h3>03. Cutting-Edge Technology</h3>
+      <p><span style="color:black;">AI-Powered Testing:</span> Leverage advanced AI capabilities to automate complex testing scenarios, generate test cases, and analyze results. This enhances accuracy and reduces the time required for manual testing.</p>
+      <p><span style="color:black;">Real-Time Monitoring and Reporting:</span> Stay informed with real-time monitoring and detailed reporting. TestEnsure provides actionable insights and analytics, helping you make data-driven decisions.</p>
+    </div>
+  </div>
+</section>
+
+<!line6!>
+<!line7!>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Automation ROI Section</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Fustat', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-container {
+      background: white;
+      margin-left: 22.5px;
+      margin-right: 22.5px;
+      border-radius: 30px;
+      padding: 100px 0px;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 100%;
+      margin-bottom: 80px;
+      padding: 0 20px;
+    }
+
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      width: 100%;
+      height: 450px;
+      margin: auto;
+    }
+
+    .slider-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      border-radius: 30px;
+      top: 0;
+      margin-left: 30px;
+      left: 0;
+      padding-left: 0px;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .content-box {
+      padding: 40px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      margin-left: 10px;
+      margin-right: 30px;
+      background-color: #fff;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-box h2 {
+      margin-top: 0;
+      font-size: 60px;
+      font-weight: 300;
+      font-family: 'Fustat', sans-serif;
+      line-height: 1.2;
+    }
+
+    .content-box h2 span {
+      background: linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 60px;
+      font-weight: 700;
+    }
+
+    .content-box p {
+      font-size: 18px;
+      font-weight: 400;
+      color: rgb(143, 143, 143);
+      line-height: 27.2px;
+      font-family: 'Fustat', sans-serif;
+    }
+
+    .cards-wrapper {
+      overflow: hidden;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: scroll 60s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .card {
+      flex-shrink: 0;
+      width: 280px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 30px;
+      font-family: 'Fustat', sans-serif;
+      color: rgb(143, 143, 143);
+      font-size: 16px;
+      text-align: center;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h4 {
+      margin: 0 0 10px 0;
+      font-size: 26px;
+      font-weight: 700;
+      background: linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Fustat', sans-serif;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .cards:hover {
+      animation-play-state: paused;
+    }
+
+    @media (max-width: 1024px) {
+      .section {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+      }
+
+      .slider-container {
+        height: 350px;
+      }
+
+      .content-box {
+        margin: 20px 0 0;
+      }
+
+      .cards {
+        animation-duration: 90s;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .main-container {
+        padding: 60px 10px;
+        margin: 15px;
+      }
+
+      .slider-container {
+        height: 220px;
+      }
+
+      .content-box h2 {
+        font-size: 36px;
+      }
+
+      .content-box h2 span {
+        font-size: 36px;
+      }
+
+      .content-box p {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      .card {
+        width: 220px;
+        padding: 20px;
+        font-size: 14px;
+      }
+
+      .card h4 {
+        font-size: 20px;
+      }
+
+      .card p {
+        font-size: 14px;
+        line-height: 22px;
+      }
+
+      .cards {
+        animation-duration: 120s;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="main-container">
+  <!-- Top Section -->
+  <div class="section">
+    <div class="slider-container" id="slider">
+      <img src="https://geekyants.com/_next/image?url=https%3A%2F%2Fstatic-cdn.geekyants.com%2Farticleblogcomponent%2F26864%2F2024-05-09%2F432786012-1715234341.jpg&w=3840&q=75" class="slide" style="opacity:1;">
+      <img src="https://media.licdn.com/dms/image/v2/D5612AQFAqAJAwUYuJg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1729225172792?e=2147483647&v=beta&t=7nCok6Muh_MFr3q8gtyldGEBNM0lsxWS73FuyVVxTAo" class="slide" style="opacity:0;">
+    </div>
+
+    <div class="content-box">
+      <h2>Maximizing <span>ROI</span></h2>
+      <p>Investing in a test automation platform like TestEnsure can significantly enhance your return on investment (ROI) by improving efficiency, reducing costs, and ensuring high-quality software delivery. Here’s how TestEnsure helps you maximize ROI</p>
+    </div>
+  </div>
+
+  <!-- Bottom Cards -->
+  <div class="cards-wrapper">
+    <div class="cards">
+      <div class="card">
+  <h4>Increased Test Coverage</h4>
+  <p><span class="heading-txt">Comprehensive Testing:</span> TestEnsure allows you to automate a wide range of tests, including unit, integration, functional, and regression tests. This ensures thorough coverage of your application, identifying defects early and reducing the risk of post-release issues.</p>
+  <p><span class="heading-txt">Parallel Execution:</span> The platform supports parallel test execution, enabling you to run multiple tests simultaneously. This accelerates the testing process and ensures faster feedback.</p>
+</div>
+
+<div class="card">
+  <h4>Cost Efficiency</h4>
+  <p><span class="heading-txt">Reduced Manual Effort:</span> By automating repetitive and time-consuming test cases, TestEnsure frees up your QA team to focus on more complex and exploratory testing. This reduces the overall manual effort and associated costs.</p>
+  <p><span class="heading-txt">Resource Automation:</span> Automation reduces the need for extensive manual testing resources, allowing you to optimize your team’s workload and allocate resources more effectively.</p>
+</div>
+
+<div class="card">
+  <h4>Faster Time-to-Market</h4>
+  <p><span class="heading-txt">Continuous Integration and Continuous Deployment (CI/CD):</span> TestEnsure integrates seamlessly with CI/CD pipelines, enabling automated testing with every code change. This ensures that defects are identified and addressed promptly, accelerating the development cycle.</p>
+  <p><span class="heading-txt">Rapid Feedback:</span> Automated tests provide quick feedback to developers, allowing for immediate corrections and improvements. This speeds up the development process and shortens the time-to-market.</p>
+</div>
+
+<div class="card">
+  <h4>Improved Quality and Reliability</h4>
+  <p><span class="heading-txt">Consistent Testing:</span> Automated tests are executed consistently, eliminating the variability and errors associated with manual testing. This ensures reliable and repeatable test results.</p>
+  <p><span class="heading-txt">Early Defect Detection:</span> By identifying defects early in the development process, TestEnsure helps prevent costly fixes later in the lifecycle. This improves the overall quality of the software.</p>
+</div>
+
+<div class="card">
+  <h4>Detailed Reporting and Analytics</h4>
+  <p><span class="heading-txt">Insightful Reports:</span> TestEnsure provides detailed test reports and analytics, offering insights into test results, coverage, and trends. This helps in making informed decisions and identifying areas for improvement.</p>
+  <p><span class="heading-txt">Real-time Monitoring:</span> The platform offers real-time monitoring of test execution, allowing you to track progress and address issues promptly.</p>
+</div>
+
+<div class="card">
+  <h4>Scalability and Flexibility</h4>
+  <p><span class="heading-txt">Scalable Framework:</span> TestEnsure’s automation framework is scalable, allowing you to handle large and complex test suites efficiently. This ensures that your testing processes can grow with your application.</p>
+  <p><span class="heading-txt">Flexible Integration:</span> The platform supports integration with various tools and technologies, making it adaptable to different project requirements and environments.</p>
+</div>
+
+<div class="card">
+  <h4>Enhanced Collaboration</h4>
+  <p><span class="heading-txt">Team Collaboration:</span> TestEnsure facilitates collaboration between development, QA, and operations teams by providing a unified platform for test management and execution. This improves communication and coordination across teams.</p>
+  <p><span class="heading-txt">Shared Repositories:</span> The platform supports shared repositories for test scripts and data, ensuring that all team members have access to the latest test assets.</p>
+</div>
+
+<!-- Duplicate cards for seamless looping -->
+<div class="card">
+  <h4>Increased Test Coverage</h4>
+  <p><span class="heading-txt">Comprehensive Testing:</span> TestEnsure allows you to automate a wide range of tests, including unit, integration, functional, and regression tests. This ensures thorough coverage of your application, identifying defects early and reducing the risk of post-release issues.</p>
+  <p><span class="heading-txt">Parallel Execution:</span> The platform supports parallel test execution, enabling you to run multiple tests simultaneously. This accelerates the testing process and ensures faster feedback.</p>
+</div>
+
+<div class="card">
+  <h4>Cost Efficiency</h4>
+  <p><span class="heading-txt">Reduced Manual Effort:</span> By automating repetitive and time-consuming test cases, TestEnsure frees up your QA team to focus on more complex and exploratory testing. This reduces the overall manual effort and associated costs.</p>
+  <p><span class="heading-txt">Resource Automation:</span> Automation reduces the need for extensive manual testing resources, allowing you to optimize your team’s workload and allocate resources more effectively.</p>
+</div>
+
+<div class="card">
+  <h4>Faster Time-to-Market</h4>
+  <p><span class="heading-txt">Continuous Integration and Continuous Deployment (CI/CD):</span> TestEnsure integrates seamlessly with CI/CD pipelines, enabling automated testing with every code change. This ensures that defects are identified and addressed promptly, accelerating the development cycle.</p>
+  <p><span class="heading-txt">Rapid Feedback:</span> Automated tests provide quick feedback to developers, allowing for immediate corrections and improvements. This speeds up the development process and shortens the time-to-market.</p>
+</div>
+
+<div class="card">
+  <h4>Improved Quality and Reliability</h4>
+  <p><span class="heading-txt">Consistent Testing:</span> Automated tests are executed consistently, eliminating the variability and errors associated with manual testing. This ensures reliable and repeatable test results.</p>
+  <p><span class="heading-txt">Early Defect Detection:</span> By identifying defects early in the development process, TestEnsure helps prevent costly fixes later in the lifecycle. This improves the overall quality of the software.</p>
+</div>
+
+<div class="card">
+  <h4>Detailed Reporting and Analytics</h4>
+  <p><span class="heading-txt">Insightful Reports:</span> TestEnsure provides detailed test reports and analytics, offering insights into test results, coverage, and trends. This helps in making informed decisions and identifying areas for improvement.</p>
+  <p><span class="heading-txt">Real-time Monitoring:</span> The platform offers real-time monitoring of test execution, allowing you to track progress and address issues promptly.</p>
+</div>
+
+<div class="card">
+  <h4>Scalability and Flexibility</h4>
+  <p><span class="heading-txt">Scalable Framework:</span> TestEnsure’s automation framework is scalable, allowing you to handle large and complex test suites efficiently. This ensures that your testing processes can grow with your application.</p>
+  <p><span class="heading-txt">Flexible Integration:</span> The platform supports integration with various tools and technologies, making it adaptable to different project requirements and environments.</p>
+</div>
+
+<div class="card">
+  <h4>Enhanced Collaboration</h4>
+  <p><span class="heading-txt">Team Collaboration:</span> TestEnsure facilitates collaboration between development, QA, and operations teams by providing a unified platform for test management and execution. This improves communication and coordination across teams.</p>
+  <p><span class="heading-txt">Shared Repositories:</span> The platform supports shared repositories for test scripts and data, ensuring that all team members have access to the latest test assets.</p>
+</div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('#slider img');
+  setInterval(() => {
+    slides[currentSlide].style.opacity = 0;
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].style.opacity = 1;
+  }, 3000);
+</script>
+
+</body>
+</html>
+
+<!line7!>
+<!line8!>
+<style>
+  body {
+    font-family: 'Fustat', sans-serif;
+    padding: 80px 30px;
+  }
+
+  .faq-container {
+    max-width: 1500px;
+    margin: auto;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap; 
+    margin-top: 100px;
+    margin-bottom: 100px;
+    height: 780px;
+    position: relative;
+  }
+
+  .faq-title-box {
+    flex: 1;
+    min-width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+    position: relative;
+  }
+
+  .faq-title {
+    font-size: 50px;
+    font-weight: 700;
+    background:linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom:50px;
+    line-height: 1.2;
+  }
+
+  .faq-content {
+    flex: 2;
+    min-width: 300px;
+  }
+heading-text{
+font-weight:600px;
+color:black;
+}
+  .faq {
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.1s ease;
+  }
+
+  .faq .question {
+    padding: 20px 50px 20px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size:22px;
+    color: black;
+    transition: color 0.1s ease;
+  }
+
+  .question span {
+    transition: all 0.3s ease;
+   font-weight: 700;
+    font-size:22px;
+    color: black;
+  }
+
+  .faq .answer {
+    display: none;
+    font-size: 16px;
+    line-height: 27.2px;
+font-weight:400;
+  }
+
+  .faq.active {
+    background: linear-gradient(263deg, #73ED7C 0.16%, #019297 99.84%);
+    color: white;
+    position: relative;
+  }
+
+  .faq.active .question {
+    color: white;
+font-weight: 700;
+    font-size:22px;
+  }
+
+  .faq.active .question span {
+    color: white;
+    transform: rotate(90deg);
+font-weight: 700;
+    font-size:22px;
+  }
+
+  .faq.active .answer {
+    display: block;
+  }
+
+  .faq .answer-box {
+    padding: 15px 20px 20px;
+    color: white;
+    font-size: 14px;
+    position: relative;
+  }
+
+  .faq.active .answer-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.5); /* white separator */
+    margin-bottom: 15px;
+  }
+@media screen and (max-width: 1200px) {
+    .faq-container {
+      flex-direction: column;
+      height: auto;
+      padding: 0 20px;
+    }
+
+    .faq-title-box {
+      padding-right: 0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .faq-title {
+      font-size: 40px;
+      margin-bottom: 30px;
+    }
+
+    .faq-content {
+      width: 100%;
+    }
+
+    .faq .question {
+      padding: 18px 20px;
+      font-size: 20px;
+    }
+
+    .question span {
+      font-size: 20px;
+    }
+
+    .faq .answer-box {
+      font-size: 15px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .faq-title {
+      font-size: 32px;
+    }
+
+    .faq .question {
+      font-size: 18px;
+    }
+
+    .question span {
+      font-size: 18px;
+    }
+
+    .faq .answer-box {
+      font-size: 14px;
+      padding: 15px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    body {
+      padding: 60px 15px;
+    }
+
+    .faq-title {
+      font-size: 28px;
+    }
+
+    .faq .question {
+      font-size: 16px;
+      padding: 16px;
+    }
+
+    .question span {
+      font-size: 16px;
+    }
+
+    .faq .answer-box {
+      font-size: 13px;
+    }
+  }
+  @media screen and (max-width: 900px) {
+    .faq-container {
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+    }
+
+    .faq-title-box {
+      justify-content: center;
+      align-items: center;
+      padding-right: 0;
+      padding-bottom: 30px;
+    }
+
+    .faq-title-box::after {
+      display: none;
+    }
+  }
+</style>
+
+<div class="faq-container">
+  <div class="faq-title-box" id="titleBox">
+    <h2 class="faq-title">TestEnsure Features</h2>
+  </div>
+
+  <div class="faq-content">
+    <div class="faq">
+      <div class="question" onclick="toggleFAQ(this)">
+        Test Requirements Management <span>+</span>
+      </div>
+      <div class="answer">
+        <div class="answer-box">
+          Built-in Test requirements management. Organise your tests, define the use-cases, tag them with feature or label. Use the workflow to collaborate through the implementation.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="question" onclick="toggleFAQ(this)">
+        Low Code Test Library <span>+</span>
+      </div>
+      <div class="answer">
+        <div class="answer-box">
+          Configure your tests with speed, quality and reliability using the built-in elements library. Enables you to define low code actions and controls for cross-browsers, mobile apps, APIs, and database testing.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="question" onclick="toggleFAQ(this)">
+        Modular and Reusable Test Steps <span>+</span>
+      </div>
+      <div class="answer">
+        <div class="answer-box">
+          Highly scalable, flexible, easy maintainable, one stop interface for Test Cases, Test Data, Test Execution Management & Tracking. Create tests fast by reusing the created blocks. Speed up your test implementation and facilitate team member integration.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="question" onclick="toggleFAQ(this)">
+        Scalable Parallel Test Execution<span>+</span>
+      </div>
+      <div class="answer">
+        <div class="answer-box">
+          Execute your Tests across environments, browsers, devices, countries and locations. Leverage native integrations with execution robots. Tune your execution parameters for increased traceability, screenshots, replay, logging and queuing capabilities.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="question" onclick="toggleFAQ(this)">
+        Dashboards & Traceability<span>+</span>
+      </div>
+      <div class="answer">
+        <div class="answer-box">
+          Built-in traceability of your tests execution including steps, actions, controls, robots and network traffic. Enabling a fast, reproducible and easy debugging. Increase your test coverage and quality. Replay in one-click.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="question" onclick="toggleFAQ(this)">
+        Test Execution Analytics<span>+</span>
+      </div>
+      <div class="answer">
+        <div class="answer-box">
+          Manage all automation results and reports in one place with traceability and visibility of test executions. Provides access to Custom dashboards and metrics to learn from the past and predict trends. Perform trend analysis, detect spikes and abnormal application behaviors.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="question" onclick="toggleFAQ(this)">
+        User and Role based Access<span>+</span>
+      </div>
+      <div class="answer">
+        <div class="answer-box">
+          Multi-company Test Artifacts with robust Role Based Access Controls. Keep a centralised security view integrating with AD or LDAP.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <div class="question" onclick="toggleFAQ(this)">
+        Tagging and Re-Run<span>+</span>
+      </div>
+      <div class="answer">
+        <div class="answer-box">
+          Tagging and Grouping feature that enables running the test cases by modules, functionality, severity, and priority.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleFAQ(el) {
+    const parent = el.parentElement;
+    const isActive = parent.classList.contains('active');
+    const titleBox = document.getElementById('titleBox');
+
+    // Collapse all
+    document.querySelectorAll('.faq').forEach(faq => {
+      faq.classList.remove('active');
+      faq.querySelector('span').innerText = '+';
+    });
+
+    // Expand selected
+    if (!isActive) {
+      parent.classList.add('active');
+      el.querySelector('span').innerText = '×';
+      titleBox.classList.add('active');
+    } else {
+      titleBox.classList.remove('active');
+    }
+
+    // If no FAQ is active, remove the separator effect
+    const anyActive = [...document.querySelectorAll('.faq')].some(f => f.classList.contains('active'));
+    if (!anyActive) {
+      titleBox.classList.remove('active');
+    }
+  }
+</script>
+<!line8!>
+<!line9!><style>
+  @media screen and (max-width: 1024px) {
+    div[style*="background-color:#0b2e2e"] {
+      flex-direction: column;
+      padding: 60px 30px;
+      gap: 60px !important;
+      margin-left: 15px !important;
+      margin-right: 15px !important;
+    }
+
+    div[style*="text-align: center;"] img {
+      max-width: 80%;
+      height: auto;
+    }
+
+    div[style*="text-align: left;"] {
+      text-align: center !important;
+      padding-right: 0 !important;
+    }
+
+    div[style*="text-align: left;"] h2 {
+      font-size: 36px !important;
+    }
+
+    div[style*="text-align: left;"] p {
+      padding-right: 0 !important;
+      font-size: 15px !important;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    div[style*="text-align: center;"] img {
+      max-width: 100%;
+    }
+
+    div[style*="text-align: left;"] h2 {
+      font-size: 30px !important;
+    }
+
+    div[style*="text-align: left;"] p {
+      font-size: 14px !important;
+    }
+  }
+</style>
+
+<div style="background-color:#0b2e2e; padding: 100px 0px; font-family: 'Fustat', sans-serif; display: flex; margin-left:22.5px; margin-right:22.5px;
+    flex-wrap: wrap;
+    gap: 100px; 
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    position: relative;">
+  <!-- Image on Left -->
+  <div style="flex: 1; min-width: 300px; text-align: center;">
+    <img src="https://testensure.com/wp-content/uploads/2024/09/Integrations-flat.svg" alt="Integrations" style="max-width: 100%; height: auto;">
+  </div>
+
+  <!-- Text Content on Right -->
+  <div style="flex: 1; min-width: 300px; text-align: left;">
+    <h2 style="font-weight: 700;
+      font-size: 48px;
+      background:linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;">
+      Integrations
+    </h2>
+    
+    <p style="color: rgb(255,255,255); font-size: 16px; font-weight: 400; line-height: 1.6;">
+      TestEnsure comes with Jenkins as CI/CD pipeline and Jira for Issue logging and tracking.
+    </p>
+    <p style="color: rgb(255,255,255);font-size: 16px;font-weight: 400;line-height: 1.6;margin-right: 0px;padding-right: 202px;">
+      TestEnsure is designed to integrate with many popular tools. You can use TestEnsure with your favorite issue tracking tool, submit test results from any test automation tool, integrate TestEnsure with your CI/CD workflow and log in with third-party authentication providers.
+    </p>
+  </div>
+</div>
+<!line9!>
+<!line10!><style>
+  @media screen and (max-width: 1024px) {
+    div[style*="display: flex; flex-wrap: wrap; justify-content: space-between"] {
+      flex-direction: column !important;
+      margin: 0 20px !important;
+      padding: 60px 0 !important;
+    }
+
+    div[style*="flex: 1; min-width: 300px; max-width: 40%"] {
+      max-width: 100% !important;
+      padding-right: 0 !important;
+      margin-bottom: 40px;
+    }
+
+    div[style*="flex: 1; min-width: 300px; max-width: 50%"] {
+      max-width: 100% !important;
+    }
+
+    form {
+      width: 100%;
+    }
+
+    form input,
+    form textarea,
+    form button {
+      width: 100% !important;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    div[style*="display: flex; flex-wrap: wrap; justify-content: space-between"] h2 {
+      font-size: 36px !important;
+    }
+
+    div[style*="display: flex; flex-wrap: wrap; justify-content: space-between"] h3 {
+      font-size: 18px !important;
+    }
+
+    form input,
+    form textarea {
+      font-size: 14px !important;
+    }
+
+    form button {
+      font-size: 14px !important;
+      padding: 10px !important;
+    }
+  }
+</style>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; font-family: 'Fustat', sans-serif; padding:100px 0p; color:black; margin:100px 80px;">
+  <!-- Left Content -->
+  <div style="flex: 1; min-width: 300px; max-width: 40%; padding-right: 20px;">
+    <h2 style="font-size: 50px; font-weight:300; margin: 0 0 20px; line-height: 1.2;">
+       Talk with our <br><span style=" background-image: linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;">Experts</span>
+    </h2>
+    
+    <!-- Contact Form -->
+    <form style="display: flex; flex-direction: column; gap: 15px; padding:10px;">
+      <input type="text" placeholder="Your Name" style="padding: 10px; border: none; border-radius: 4px; color: black;">
+      <input type="email" placeholder="Your Email" style="padding: 10px; border: none; border-radius: 4px; color: black;">
+      <input type="text" placeholder="Your Mobile Number" style="padding: 10px; border: none; border-radius: 4px; color: black;">
+      <textarea placeholder="Your Message" style="padding: 10px; border: none; border-radius: 4px; color: black; height: 100px;"></textarea>
+      <button type="submit" style="padding: 12px; border: none; background: linear-gradient(to right,#019297 0%, #73ED7C 50%, #019297 100%);  background:linear-gradient(to right, #019297 0%, #019297 50%); color: white; font-weight: bold; border-radius: 25px; cursor: pointer;">
+        SEND MESSAGE →
+      </button>
+    </form>
+  </div>
+
+  <!-- Right Content: Contact Info -->
+  <div style="flex: 1; min-width: 300px; max-width: 50%;">
+    <div style="margin-bottom: 30px;">
+      <h3 style="color:rgb(4, 42, 45); margin-bottom: 10px;">
+        <img src="https://img.icons8.com/ios-filled/20/00ff88/phone.png" style="vertical-align: middle; margin-right: 10px;">
+        Phone Support
+      </h3>
+      <p style="margin: 0; color:rgb(143,143,143);">+1 667-224-6999</p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+      <h3 style="color:rgb(4, 42, 45); margin-bottom: 10px;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPWwZbD0TV2PuaEB96Ghr9WKnUoh3IfxafRQ&s" 
+             style="vertical-align: middle; margin-right: 10px;height:20px;weight:20px;" 
+             alt="Email Icon">
+        Email Us
+      </h3>
+      <p style="margin: 0; color:rgb(143,143,143);">
+        <a href="mailto:marcom@sailotech.com" style="color:rgb(143,143,143); text-decoration: none;">
+          marcom@sailotech.com
+        </a>
+      </p>
+    </div>
+
+    <div style="margin-bottom: 30px;">
+      <h3 style="color:rgb(4, 42, 45); margin-bottom: 10px;">
+        <img src="https://img.icons8.com/ios-filled/20/00ff88/marker.png" style="vertical-align: middle; margin-right: 10px;">
+        Address
+      </h3>
+      <p style="margin: 0; color:rgb(143,143,143);">10490 Little Patuxent Pkwy, Suite 600, Columbia, MD 21044</p>
+    </div>
+
+    <!-- Google Map -->
+    <div style="margin-top: 20px;">
+      <iframe src="https://www.google.com/maps?q=10490+Little+Patuxent+Pkwy,+Columbia,+MD+21044&output=embed" width="100%" height="200" frameborder="0" style="border:0; border-radius: 10px;" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!line10!>
