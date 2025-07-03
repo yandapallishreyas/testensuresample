@@ -291,7 +291,85 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GIF Section</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Fustat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #F2F1ED;
+    }
 
+    .gif-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 40px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .gif-container img {
+      width: 460px;
+      height: 460px;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+
+    .text-container h2 {
+      font-size: 60px;
+      font-weight: 300;
+      line-height: 1.2;
+      margin: 0; color:black;
+    }
+
+    .text-container h2 span {
+      background: linear-gradient(267.43deg, #73ed7c 4.95%, #019297 97.92%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .gif-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .text-container h2 {
+        font-size: 36px;
+      }
+
+      .text-container h2 span {
+        font-size: 36px;
+      }
+
+      .gif-container img {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="gif-section">
+  <div class="gif-container">
+    <img src="https://raw.githubusercontent.com/yandapallishreyas/testensuresample/main/Imp%20gif.gif" alt="Automation GIF">
+  </div>
+  <div class="text-container">
+    <h2><span>ERP<br>PRE-BUILT<BR>TEST<BR> SCENARIOS</span></h2> <p style="color:black;">Streamline your business processes with ready-to-use automated test scenarios designed for ERP systems</p>
+  </div>
+</section>
+
+</body>
+</html>
 <!-----!>
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Fustat&display=swap" rel="stylesheet">
